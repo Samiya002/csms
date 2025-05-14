@@ -1,0 +1,41 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser>
+    SignInManager
+    @inject UserManager<IdentityUser>
+        UserManager
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>@ViewData["Title"] - Cafe Management System</title>
+            <link rel="stylesheet" href="~/css/site.css" />
+        </head>
+        <body>
+            <header>
+                <nav>
+                    <a href="/Home/Index">Home</a>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a href="/Coffee/Index">Coffee</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a href="/Admin/Dashboard">Admin Dashboard</a>
+                        }
+                        <form method="post" asp-area="" asp-controller="Account" asp-action="Logout">
+                            <button type="submit">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a href="/Identity/Account/Login">Login</a>
+                    }
+                </nav>
+            </header>
+            <main>
+                @RenderBody()
+            </main>
+            <footer>
+                <p>&copy; 2025 Cafe Management System</p>
+            </footer>
+        </body>
+    </html>

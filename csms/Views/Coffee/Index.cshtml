@@ -1,0 +1,32 @@
+@model IEnumerable<csms.Models.Coffee>
+
+@{
+    ViewData["Title"] = "Coffee List";
+}
+
+<h1>Coffee List</h1>
+
+<a class="btn btn-primary" asp-action="Create" asp-controller="Coffee">Add coffee</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var coffee in Model)
+        {
+            <tr>
+                <td>@coffee.Name</td>
+                <td>@coffee.Price.ToString("C")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@coffee.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@coffee.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

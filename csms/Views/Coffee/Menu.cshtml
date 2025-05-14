@@ -1,0 +1,35 @@
+@model IEnumerable<csms.Models.Coffee>
+
+@{
+    ViewData["Title"] = "Coffee Menu";
+}
+
+<h1>Coffee Menu</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity Available</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var coffee in Model)
+        {
+            <tr>
+                <td>@coffee.Name</td>
+                <td>@coffee.Price.ToString("C")</td>
+                <td>@coffee.Quantity</td>
+                <td>
+                    <form asp-action="Order" method="post">
+                        <input type="hidden" name="CoffeeId" value="@coffee.Id" />
+                        <input type="number" name="Quantity" min="1" max="@coffee.Quantity" class="form-control" style="width: 100px; display: inline;" required />
+                        <button type="submit" class="btn btn-primary">Order</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
