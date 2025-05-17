@@ -6,8 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace csms.Controllers
 {
-   
-   
     public class CoffeeController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -130,7 +128,9 @@ namespace csms.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Menu()
         {
-            var coffees = await _context.Coffees.ToListAsync();
+            var coffees = await _context.Coffees
+                .Take(200)
+                .ToListAsync();
             return View(coffees);
         }
 

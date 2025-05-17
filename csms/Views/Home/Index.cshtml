@@ -2,7 +2,37 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<style>
+    body {
+        background: linear-gradient(135deg, #f8fafc 0%, #e0c3fc 100%);
+        min-height: 50vh;
+    }
+    .cafe-card {
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        padding: 2.5rem 2rem;
+        margin-top: 4rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .cafe-logo {
+        width: 80px;
+        margin-bottom: 1rem;
+    }
+    .btn-lg {
+        min-width: 180px;
+    }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="card shadow text-center w-100" style="max-width: 350px;">
+        <div class="card-body p-4">
+            <img src="https://img.icons8.com/ios-filled/100/coffee.png" alt="Cafe Logo" class="mb-2" style="width:48px;" />
+            <h1 class="h4 mb-2" style="color: #7b3f00;">Welcome to Cafe Management System</h1>
+            <p class="mb-3 text-secondary" style="font-size: 1rem;">
+                "The aroma of possibility, served daily."
+            </p>
+        </div>
+    </div>
